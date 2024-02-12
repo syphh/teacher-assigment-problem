@@ -1,0 +1,75 @@
+{
+    "num_classrooms": 2,
+    "classes": [
+        {
+            "subject": "Algorithms",
+            "amount": 7,
+            "duration_hours": 2,
+            "duration_minutes": 0
+        },
+        {
+            "subject": "Databases",
+            "amount": 7,
+            "duration_hours": 2,
+            "duration_minutes": 30
+        },
+        {
+            "subject": "Logic",
+            "amount": 5,
+            "duration_hours": 3,
+            "duration_minutes": 0
+        },
+        {
+            "subject": "Discrete Math",
+            "amount": 6,
+            "duration_hours": 3,
+            "duration_minutes": 0
+        },
+        {
+            "subject": "Machine Learning",
+            "amount": 8,
+            "duration_hours": 2,
+            "duration_minutes": 30
+        },
+        {
+            "subject": "Constraint Programming",
+            "amount": 4,
+            "duration_hours": 3,
+            "duration_minutes": 0
+        },
+        {
+            "subject": "Data Visualization",
+            "amount": 5,
+            "duration_hours": 2,
+            "duration_minutes": 0
+        },
+        {
+            "subject": "Metaheuristics",
+            "amount": 6,
+            "duration_hours": 2,
+            "duration_minutes": 30
+        }
+    ],
+    "teachers": [
+        {
+            "name": "Samir Ador",
+            "subjects": ["Algorithms", "Databases", "Logic", "Metaheuristics"]
+        },
+        {
+            "name": "Elija Va",
+            "subjects": ["Discrete Math", "Machine Learning", "Metaheuristics"]
+        },
+        {
+            "name": "Ada Taviz",
+            "subjects": ["Algorithms", "Databases", "Logic", "Discrete Math", "Data Visualization"]
+        },
+        {
+            "name": "Pascal Goritm",
+            "subjects": ["Machine Learning", "Algorithms", "Metaheuristics", "Constraint Programming"]
+        },
+        {
+            "name": "Franko Tlin",
+            "subjects": ["Data Visualization", "Constraint Programming", "Algorithms"]
+        }
+    ]
+}
