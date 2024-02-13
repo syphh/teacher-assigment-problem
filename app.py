@@ -53,7 +53,7 @@ def plot_schedule(schedule: list[dict], weekday: int):
     return fig
 
 
-def schedule_to_csv(schedule: list[dict], filename: str):
+def schedule_to_csv(schedule: list[dict]):
     try:
         BLOCK_SIZE_IN_MINUTES = 30
         df = pd.DataFrame(schedule, columns=["classroom", "weekday", "start_period", "duration", "subject", "teacher"])
@@ -67,10 +67,10 @@ def schedule_to_csv(schedule: list[dict], filename: str):
         df["classroom"] = df["classroom"] + 1  # make classrooms 1-indexes
         df = df[["date", "start", "end", "subject", "teacher", "classroom"]]
         df = df.sort_values(by=["date", "start", "classroom"])
-        df.to_csv(filename, index=False)
-        schedule_tab.success(f"Schedule saved to {filename}")
+        return df.to_csv(index=False).encode("utf-8")
     except Exception as e:
-        schedule_tab.error(f"Error saving schedule to {filename}: {e}")
+        schedule_tab.error(f"Error creating schedule csv: {e}")
+        return None
 
 
 exmaple_file = "example.json"
@@ -166,6 +166,9 @@ with schedule_tab:
                 st.subheader(weekdays[weekday])
                 fig = plot_schedule(schedule, weekday)
                 st.plotly_chart(fig, use_container_width=True)
-            schedule_to_csv(schedule, filename)
+            schedule_csv = schedule_to_csv(schedule)
+            filename = "schedule.csv"
+            if schedule_csv is not None:
+                st.download_button("💾 Download schedule", schedule_csv, "schedule.csv", "text/csv", key="download_csv")
         else:
             st.error("No schedule found (Running time exceeded or no possible solution)")
