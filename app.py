@@ -59,8 +59,8 @@ def schedule_to_csv(schedule: list[dict], filename: str):
         df = pd.DataFrame(schedule, columns=["classroom", "weekday", "start_period", "duration", "subject", "teacher"])
         df["start"] = df["start_period"]*BLOCK_SIZE_IN_MINUTES
         df["end"] = df["start"] + df["duration"]
-        df["start"] = st.session_state.start_date + pd.to_timedelta(df["start"], unit="m")
-        df["end"] = st.session_state.start_date + pd.to_timedelta(df["end"], unit="m")
+        df["start"] = st.session_state.start_date + pd.to_timedelta(df["weekday"], unit="d") + pd.to_timedelta(df["start"], unit="m")
+        df["end"] = st.session_state.start_date + pd.to_timedelta(df["weekday"], unit="d") + pd.to_timedelta(df["end"], unit="m")
         df["date"] = df["start"].dt.date
         df["start"] = df["start"].dt.time
         df["end"] = df["end"].dt.time
